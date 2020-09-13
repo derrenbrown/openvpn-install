@@ -151,18 +151,18 @@ if [[ ! -e /etc/openvpn/server/server.conf ]]; then
 	fi
 	echo
 	echo "Which protocol should OpenVPN use?"
-	echo "   1) UDP (recommended)"
-	echo "   2) TCP"
-	read -p "Protocol [1]: " protocol
+	echo "   1) UDP "
+	echo "   2) TCP (My default) "
+	read -p "Protocol [2]: " protocol
 	until [[ -z "$protocol" || "$protocol" =~ ^[12]$ ]]; do
 		echo "$protocol: invalid selection."
 		read -p "Protocol [1]: " protocol
 	done
 	case "$protocol" in
-		1|"") 
+		1) 
 		protocol=udp
 		;;
-		2) 
+		2|"") 
 		protocol=tcp
 		;;
 	esac
